@@ -3,8 +3,12 @@ import { verifyToken } from '../utils/jwt.js';
 
 export interface AuthRequest extends Request {
   user?: {
-    userId: string;
-  };
+    userId: string
+    email: string
+  }
+  params: any
+  body: any
+  headers: any
 }
 
 export const authenticateToken = (
@@ -31,6 +35,6 @@ export const authenticateToken = (
     });
   }
 
-  req.user = { userId: (decoded as { userId: string }).userId };
+ req.user = { userId: (decoded as any).userId, email: (decoded as any).email || '' };
   next();
 };
