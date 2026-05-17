@@ -46,7 +46,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   signup: async (name, email, password) => {
     set({ isLoading: true });
     try {
-      const { data } = await apiClient.post<AuthResponse>('/auth/register', { name, email, password });
+      const { data } = await apiClient.post<AuthResponse>('/auth/signup', { name, email, password });
       if (data) {
         localStorage.setItem('token', data.token);
         Cookies.set('token', data.token, { expires: 7 });
