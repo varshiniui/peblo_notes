@@ -1,12 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import authRoutes from './routes/auth.js';
-import notesRoutes from './routes/notes.js';
-import aiRoutes from './routes/ai.js';
-import sharedRoutes from './routes/shared.js';
-import statsRoutes from './routes/stats.js';
-import dashboardRoutes from './routes/dashboard.js';
+import authRoutes from './routes/auth';
+import notesRoutes from './routes/notes';
+import aiRoutes from './routes/ai';
+import sharedRoutes from './routes/shared';
+import statsRoutes from './routes/stats';
+import dashboardRoutes from './routes/dashboard';
 
 const app = express();
 const PORT = process.env.PORT || 5000;

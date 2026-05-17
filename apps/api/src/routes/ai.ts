@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import type { Response } from 'express';
 import OpenAI from 'openai';
-import prisma from '../lib/prisma.js';
-import { authenticateToken } from '../middleware/auth.js';
-import type { AuthRequest } from '../middleware/auth.js';
+import prisma from '../lib/prisma';
+import { authenticateToken } from '../middleware/auth';
+import type { AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
