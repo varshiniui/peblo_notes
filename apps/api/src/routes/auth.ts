@@ -9,6 +9,9 @@ import type { AuthRequest } from '../middleware/auth.js';
 const router = Router();
 
 // POST /auth/signup
+router.post('/register', async (req, res) => {
+  return res.redirect(307, '/api/auth/signup');
+});
 router.post('/signup', async (req: Request, res: Response) => {
   try {
     const { email, password, name } = req.body;
