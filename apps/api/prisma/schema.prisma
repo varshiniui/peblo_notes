@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notes Note[]
+  tags  Tag[]
+  aiGenerations AIGeneration[]
+  shares        Share[]
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String   @default("Untitled")
+  content   String   @default("")
+  isPinned  Boolean  @default(false)
+  isPublic  Boolean  @default(false)
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  tags          NoteTag[]
+  share         Share?
+  aiGenerations AIGeneration[]
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String
+  color String @default("#6366f1")
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  notes NoteTag[]
+
+  @@unique([userId, name])
+}
+
+model NoteTag {
+  noteId String
+  tagId  String
+
+  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([noteId, tagId])
+}
+
+model Share {
+  id        String   @id @default(cuid())
+  shareId   String   @unique
+  userId    String
+  noteId    String   @unique
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+}
+
+model AIGeneration {
+  id        String   @id @default(cuid())
+  type      String   @default("summary")
+  prompt    String
+  result    String
+  createdAt DateTime @default(now())
+
+  noteId String
+  note   Note   @relation(fields: [noteId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
