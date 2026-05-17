@@ -8,8 +8,8 @@ A lightweight, full-stack notes application with integrated AI analysis. Write f
 
 | | Link |
 |---|---|
-| Frontend | https://peblo-notes.vercel.app |
-| Demo Video | https://loom.com/share/YOUR_LOOM_ID |
+| Frontend |https://peblonotes.vercel.app/login|
+
 
 ---
 
