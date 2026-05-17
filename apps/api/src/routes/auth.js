@@ -5,7 +5,7 @@ import { generateToken } from '../utils/jwt.js';
 import { authenticateToken } from '../middleware/auth.js';
 const router = Router();
 // POST /auth/register
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const { email, password, name } = req.body;
         if (!email || !password || !name) {
