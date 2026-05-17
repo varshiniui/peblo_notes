@@ -54,7 +54,7 @@ A lightweight, full-stack notes application with integrated AI analysis. Write f
 | ORM | Prisma |
 | Authentication | JWT, bcrypt |
 | AI | OpenRouter API |
-| Deployment | Vercel (frontend), Railway (backend) |
+| Deployment | Vercel (frontend), Render (backend) |
 
 ---
 
