@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 260 30% 99%;
+    --foreground: 260 50% 25%;
+
+    /* Card & Surface */
+    --card: 0 0% 100%;
+    --card-foreground: 260 50% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 50% 25%;
+
+    /* Primary (Soft Muted Lavender) */
+    --primary: 265 85% 75%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary (Soft Pink) */
+    --secondary: 330 100% 97%;
+    --secondary-foreground: 330 60% 45%;
+
+    /* Muted (Light Grey-Lavender) */
+    --muted: 260 20% 97%;
+    --muted-foreground: 260 15% 55%;
+
+    /* Accent (Subtle Lavender hover) */
+    --accent: 265 80% 97%;
+    --accent-foreground: 265 60% 40%;
+
+    /* Functional */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 260 20% 94%;
+    --input: 260 20% 94%;
+    --ring: 265 85% 75%;
+
+    /* Geometry */
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 260 40% 8%;
+    --foreground: 260 10% 96%;
+    --card: 260 40% 10%;
+    --card-foreground: 260 10% 96%;
+    --popover: 260 40% 10%;
+    --popover-foreground: 260 10% 96%;
+    --primary: 265 85% 75%;
+    --primary-foreground: 260 40% 10%;
+    --secondary: 330 40% 15%;
+    --secondary-foreground: 330 100% 95%;
+    --muted: 260 40% 12%;
+    --muted-foreground: 260 10% 70%;
+    --accent: 260 40% 15%;
+    --accent-foreground: 260 10% 96%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 260 40% 18%;
+    --input: 260 40% 18%;
+    --ring: 265 85% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary/20 selection:text-primary transition-colors duration-300;
+  }
+}
+
+/* Custom UI Polish Classes */
+@layer utilities {
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white/20 shadow-sm;
+  }
+
+  .soft-shadow {
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+
+  .lavender-gradient {
+    @apply bg-gradient-to-br from-primary/5 via-transparent to-secondary/10;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
