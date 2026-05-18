@@ -178,46 +178,59 @@ export default function DashboardPage() {
     }
 
     return (
-      <div className="h-full flex flex-col items-center justify-center px-10 text-center animate-in fade-in duration-1000">
-        <div className="mb-12">
-          <div className="flex justify-center">
-            <div className="p-4 rounded-lg bg-muted border border-border/30">
-              <StickyNote className="h-10 w-10 text-muted-foreground" />
+      <div className="h-full flex flex-col items-center justify-center px-8 text-center animate-in fade-in duration-1000">
+        <div className="max-w-md w-full space-y-8">
+          {/* Icon Container */}
+          <div className="flex justify-center pt-12">
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-5 rounded-xl bg-gradient-to-br from-primary/8 to-primary/3 border border-primary/10 backdrop-blur-sm">
+                <StickyNote className="h-12 w-12 text-primary/60" />
+              </div>
             </div>
           </div>
-        </div>
 
-        <h2 className="text-3xl font-semibold text-foreground tracking-tight mb-3">Start your journey</h2>
-        <p className="text-muted-foreground max-w-[340px] leading-relaxed font-medium mb-8 text-sm">
-          Your digital sanctuary for ideas, memories, and AI-powered reflections.
-        </p>
-
-        <Button 
-          className="bg-primary hover:bg-primary/90 text-white font-semibold px-10 py-7 rounded-[1.5rem] shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 group"
-          onClick={handleCreateNote}
-        >
-          <Plus className="mr-3 h-5 w-5 group-hover:rotate-90 transition-transform duration-500" />
-          <span className="text-base">Compose New Draft</span>
-        </Button>
-
-        {topTags.length > 0 ? (
-          <div className="mt-8 flex flex-wrap gap-2 justify-center">
-            {topTags.map((tag) => (
-              <span
-                key={tag.name}
-                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium"
-                style={{
-                  backgroundColor: tag.color,
-                  color: getContrastColor(tag.color),
-                }}
-              >
-                {tag.name}
-              </span>
-            ))}
+          {/* Content */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-4xl font-bold text-foreground mb-2">Start your journey</h2>
+              <div className="h-1 w-16 bg-gradient-to-r from-primary/60 to-primary/20 mx-auto rounded-full mb-4" />
+            </div>
+            <p className="text-muted-foreground max-w-sm mx-auto leading-relaxed text-base">
+              Create your first note and discover the power of capturing ideas in one beautiful space.
+            </p>
           </div>
-        ) : (
-          <p className="mt-8 text-xs text-muted-foreground">No tags yet</p>
-        )}
+
+          {/* CTA Button */}
+          <Button 
+            className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-95 group"
+            onClick={handleCreateNote}
+          >
+            <Plus className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            <span>Create Your First Note</span>
+          </Button>
+
+          {/* Tags Preview */}
+          {topTags.length > 0 && (
+            <div className="pt-4 border-t border-border/30">
+              <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wide font-semibold">Popular topics</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {topTags.slice(0, 5).map((tag) => (
+                  <span
+                    key={tag.name}
+                    className="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium border border-current border-opacity-10"
+                    style={{
+                      backgroundColor: tag.color + '15',
+                      color: tag.color,
+                    }}
+                  >
+                    {tag.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     )
   }
