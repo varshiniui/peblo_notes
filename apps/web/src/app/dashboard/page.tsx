@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { apiClient } from "@/lib/api"
 import NoteEditor from "@/components/NoteEditor"
 import DashboardShell from "@/components/DashboardShell"
-import { StickyNote, Sparkles, Plus } from "lucide-react"
+import { StickyNote, Plus } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 
@@ -179,18 +179,16 @@ export default function DashboardPage() {
 
     return (
       <div className="h-full flex flex-col items-center justify-center px-10 text-center animate-in fade-in duration-1000">
-        <div className="relative mb-8">
-          <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-150 animate-pulse" />
-          <div className="relative p-6 rounded-[2rem] bg-card/80 backdrop-blur-xl shadow-2xl shadow-primary/5 border border-border/50 transform hover:scale-105 transition-transform duration-700 group cursor-default">
-            <StickyNote className="h-12 w-12 text-primary group-hover:scale-110 transition-transform duration-500" />
-            <div className="absolute -top-2 -right-2 h-6 w-6 bg-secondary rounded-lg shadow-xl flex items-center justify-center animate-bounce duration-[2000ms]">
-              <Sparkles className="h-3 w-3 text-secondary-foreground" />
+        <div className="mb-12">
+          <div className="flex justify-center">
+            <div className="p-4 rounded-lg bg-muted border border-border/30">
+              <StickyNote className="h-10 w-10 text-muted-foreground" />
             </div>
           </div>
         </div>
 
         <h2 className="text-3xl font-semibold text-foreground tracking-tight mb-3">Start your journey</h2>
-        <p className="text-muted-foreground max-w-[340px] leading-relaxed font-medium mb-8 text-sm uppercase tracking-wide opacity-80">
+        <p className="text-muted-foreground max-w-[340px] leading-relaxed font-medium mb-8 text-sm">
           Your digital sanctuary for ideas, memories, and AI-powered reflections.
         </p>
 
